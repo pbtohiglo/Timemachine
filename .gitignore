@@ -3,3 +3,10 @@ git.cmd
 
 # Web config
 web.config
+
+#Solution and project files
+*.sln
+*.csproj
+*.pidb
+*.userprefs
+bin/*
