@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="Site.css" rel="Stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="cph_Head" runat="server" />
 	<!--Any header stuff goes here -->
 </head>
