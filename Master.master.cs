@@ -80,6 +80,7 @@ public partial class Master : System.Web.UI.MasterPage
 	    // Pulling the DB to load user info
 	    private void Load_user(SqlConnection user_db)
 	    {
+            Boolean userDisabled = false;
 			intUserType = 0;
 			
 	        //Set up the getuser procedure
@@ -95,16 +96,25 @@ public partial class Master : System.Web.UI.MasterPage
 	            while (user_reader.Read())
 	            {
                     intUserType = (Int32)user_reader["TypeID"];
+                    userDisabled = (user_reader["Disabled"].ToString() == "1");
 					break;
 	            }
 	        }
 			user_reader.Close();
 			user_reader.Dispose();
 			command_GetUser.Dispose();
-			
-			bool_teacher = (intUserType >= 1);
-			bool_admin = (intUserType >= 2);
-            lbl_UserName.Text = Session["s_user"].ToString();
+
+            if (userDisabled)
+            {
+                Session.Remove("s_user");
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                bool_teacher = (intUserType >= 1);
+                bool_admin = (intUserType >= 2);
+                lbl_UserName.Text = Session["s_user"].ToString();
+            }
 	    }
 	#endregion
 }

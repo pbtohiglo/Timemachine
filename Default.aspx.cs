@@ -28,6 +28,8 @@ public partial class _Default : System.Web.UI.Page
     protected void LoginButtonClick(object sender, EventArgs e)
     {
         Int32 intUserType = 0;
+        Boolean userDisabled = false;
+
         if (!System.Web.Security.Membership.ValidateUser(txt_username.Text, txt_password.Text))
             lbl_error_message.Text += "Username or password was invalid.<br />";
         else
@@ -48,6 +50,7 @@ public partial class _Default : System.Web.UI.Page
                 while (user_reader.Read())
                 {
                     intUserType = (Int32)user_reader["TypeID"];
+                    userDisabled = (user_reader["Disabled"].ToString() == "1");
                     break;
                 }
             }
@@ -62,6 +65,9 @@ public partial class _Default : System.Web.UI.Page
             // Close DB connection
             TM_DB.Close();
             TM_DB.Dispose();
+
+            if (userDisabled)
+                lbl_error_message.Text = "Your account is disabled.  Please contact the administrator of Time Machine.<br />";
 
             if (lbl_error_message.Text == tm_EmptyString)
             {
