@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Statistics" Language="C#" MasterPageFile="~/Master.master" AutoEventWireup="true" CodeFile="Statistics.aspx.cs" Inherits="Statistics" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.master" AutoEventWireup="true" CodeFile="Statistics.aspx.cs" Inherits="Statistics" %>
 <%@ MasterType VirtualPath="~/Master.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cph_Head" Runat="Server">
