@@ -61,7 +61,7 @@
                         <%# Eval("TypeName").ToString() %>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="ddlUserEditType" DataSourceID = "SqlUserTypes" DataValueField="ID" DataTextField="Name" runat="server" />
+                        <asp:DropDownList ID="ddlUserEditType" DataSourceID = "SqlUserTypes" DataValueField="ID" DataTextField="Name" runat="server" SelectedValue='<%# Eval ( "Type" ) %>' />
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:DropDownList ID="ddlUserType" DataSourceID = "SqlUserTypes" DataValueField="ID" DataTextField="Name" runat="server" />
@@ -72,7 +72,7 @@
                         <%# Eval("FirstName").ToString() %>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtUserEditFirst" runat="server" />
+                        <asp:TextBox ID="txtUserEditFirst" runat="server" Text='<%# Eval ( "FirstName" ) %>' />
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtUserFirst" runat="server" />
@@ -83,7 +83,7 @@
                         <%# Eval("LastName").ToString() %>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtUserEditLast" runat="server" />
+                        <asp:TextBox ID="txtUserEditLast" runat="server" Text='<%# Eval ( "LastName" ) %>' />
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtUserLast" runat="server" />
@@ -94,7 +94,7 @@
                         <asp:Label ID="lblDisabledYes" Text="Yes" Visible='<%# Eval("Disabled").ToString () == "1" %>' runat="server" />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:CheckBox ID="chkUserEditDisabled" runat="server" />
+                        <asp:CheckBox ID="chkUserEditDisabled" runat="server" Checked='<%# Eval ( "Disabled" ).ToString ( ) == "1" %>' />
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:CheckBox ID="chkUserDisabled" runat="server" />
