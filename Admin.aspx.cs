@@ -12,9 +12,13 @@ public partial class Admin : System.Web.UI.Page
         gdvUsers.ShowFooter = true;
     }
 
-    protected void ToggleUser(object sender, EventArgs e)
+    protected void lnkUpdateUser_Click(object sender, EventArgs e)
     {
         sqlUsers.UpdateParameters["userID"].DefaultValue = ((sender as LinkButton).Parent.FindControl("lblUserID") as Label).Text;
+        sqlUsers.UpdateParameters["userType"].DefaultValue = ((sender as LinkButton).Parent.FindControl("ddlUserEditType") as DropDownList).SelectedValue;
+        sqlUsers.UpdateParameters["userFirst"].DefaultValue = ((sender as LinkButton).Parent.FindControl("txtUserEditFirst") as TextBox).Text;
+        sqlUsers.UpdateParameters["userLast"].DefaultValue = ((sender as LinkButton).Parent.FindControl("txtUserEditLast") as TextBox).Text;
+        sqlUsers.UpdateParameters["userDisabled"].DefaultValue = ((sender as LinkButton).Parent.FindControl("chkUserEditDisabled") as CheckBox).Checked ? "1" : "0";
         sqlUsers.Update();
         gdvUsers.DataBind();
     }
@@ -23,6 +27,9 @@ public partial class Admin : System.Web.UI.Page
     {
         sqlUsers.InsertParameters["userID"].DefaultValue = ((sender as LinkButton).Parent.FindControl("txtUserID") as TextBox).Text;
         sqlUsers.InsertParameters["userType"].DefaultValue = ((sender as LinkButton).Parent.FindControl("ddlUserType") as DropDownList).SelectedValue;
+        sqlUsers.InsertParameters["firstName"].DefaultValue = ((sender as LinkButton).Parent.FindControl("txtUserFirst") as TextBox).Text;
+        sqlUsers.InsertParameters["lastName"].DefaultValue = ((sender as LinkButton).Parent.FindControl("txtUserLast") as TextBox).Text;
+        sqlUsers.InsertParameters["disabled"].DefaultValue = ((sender as LinkButton).Parent.FindControl("chkUserDisabled") as CheckBox).Checked ? "1" : "0";
         sqlUsers.Insert();
         gdvUsers.DataBind();
     }
