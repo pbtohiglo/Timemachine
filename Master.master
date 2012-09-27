@@ -7,11 +7,11 @@
     <title></title>
     <link href="Site.css" rel="Stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="cph_Head" runat="server" />
-	<!--Any header stuff goes here -->
+    <link rel="stylesheet" type="text/css" href="Site.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div.menu>
         <asp:Table id="tbl_Head" Width="100%" CellSpacing="0" runat="server">
 		    <asp:TableRow id="tr_Banner" BackColor="LightGray" runat="server">
 			    <asp:TableCell HorizontalAlign="right" ColumnSpan="4">
